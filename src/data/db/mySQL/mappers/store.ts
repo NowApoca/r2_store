@@ -5,20 +5,24 @@ import { StoreMySQL } from "../models";
 export class StoreMapperMySQL extends Mapper<StoreMySQL, StoreBaseModel> {
   mapFrom(param: StoreMySQL): StoreBaseModel {
     return {
-      Id: param.Id.toString(),
-      Name: param.Name.toString(),
-      PictureId: param.PictureId.toString(),
-      CreatedOnUtc: param.CreatedOnUtc,
-      UpdatedOnUtc: param.UpdatedOnUtc,
+      id: param.Id.toString(),
+      name: param.Name.toString(),
+      url: param.Url.toString(),
+      hosts: param.Hosts.toString(),
+      companyName: param.CompanyName.toString(),
+      companyAddress: param.CompanyAddress.toString(),
+      companyPhoneNumber: param.CompanyPhoneNumber.toString(),
     };
   }
   mapTo(param: StoreBaseModel): StoreMySQL {
     return {
-      Id: param.Id.toString(),
-      Name: param.Name.toString(),
-      PictureId: param.PictureId.toString(),
-      CreatedOnUtc: param.CreatedOnUtc,
-      UpdatedOnUtc: param.UpdatedOnUtc,
+      Id: param.id.toString(),
+      Name: param.name.toString(),
+      Url: param.url.toString(),
+      Hosts: param.hosts.toString(),
+      CompanyName: param.companyName.toString(),
+      CompanyAddress: param.companyAddress.toString(),
+      CompanyPhoneNumber: param.companyPhoneNumber.toString(),
     };
   }
 }

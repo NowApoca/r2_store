@@ -5,11 +5,13 @@ import { Store, StoreMongoDB } from "../models";
 export class StoreMapperMongoDB extends Mapper<StoreMongoDB, StoreBaseModel> {
   mapFrom(param: StoreMongoDB): StoreBaseModel {
     return {
-      Id: "",
-      Name: "",
-      PictureId: "",
-      CreatedOnUtc: new Date(),
-      UpdatedOnUtc: new Date(),
+      id: "",
+      name: "",
+      url: "",
+      hosts: "",
+      companyName: "",
+      companyAddress: "",
+      companyPhoneNumber: "",
     };
   }
   mapTo(param: StoreBaseModel): StoreMongoDB {

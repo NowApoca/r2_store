@@ -1,26 +1,31 @@
 import { StoreInputModel } from "../../application/domain";
 
 export interface StoreBaseModel {
-  Id: string;
-  Name: string;
-  PictureId: string;
-  CreatedOnUtc: Date;
-  UpdatedOnUtc: Date;
+  id: string;
+  name: string;
+  url: string;
+  hosts: string;
+  companyName: string;
+  companyAddress: string;
+  companyPhoneNumber: string;
 }
 
 export class Store implements StoreBaseModel {
-  public Id: string;
-  public Name: string;
-  public PictureId: string;
-
-  public CreatedOnUtc: Date;
-  public UpdatedOnUtc: Date;
+  public id: string;
+  public name: string;
+  public url: string;
+  public hosts: string;
+  public companyName: string;
+  public companyAddress: string;
+  public companyPhoneNumber: string;
 
   constructor(data: StoreInputModel) {
-    this.Id = data.Id;
-    this.Name = data.Name;
-    this.PictureId = data.PictureId;
-    this.CreatedOnUtc = data.CreatedOnUtc;
-    this.UpdatedOnUtc = data.UpdatedOnUtc;
+    this.id = data.Id;
+    this.name = data.Name;
+    this.url = data.Url;
+    this.hosts = data.Hosts;
+    this.companyName = data.CompanyName;
+    this.companyAddress = data.CompanyAddress;
+    this.companyPhoneNumber = data.CompanyPhoneNumber;
   }
 }

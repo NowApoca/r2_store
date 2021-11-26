@@ -35,7 +35,7 @@ const setMySQL2 = {
 export const AppConnections = new DataBaseConnections();
 
 async function appStart(): Promise<string> {
-  const app = new App(3000);
+  const app = new App(3004);
   const AppConnections = new DataBaseConnections();
   AppConnections.addConnection(
     ConnectionType.Mongoose,

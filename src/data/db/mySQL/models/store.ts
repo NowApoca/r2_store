@@ -1,10 +1,12 @@
 import { StoreBaseModel } from "data/entities";
 export interface StoreMySQL {
-  Name: String;
-  PictureId: String;
   Id: String;
-  CreatedOnUtc: Date;
-  UpdatedOnUtc: Date;
+  Name: String;
+  Url: string;
+  Hosts: string;
+  CompanyName: string;
+  CompanyAddress: string;
+  CompanyPhoneNumber: string;
 }
 
 export class User {

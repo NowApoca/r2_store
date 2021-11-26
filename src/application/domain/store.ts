@@ -1,7 +1,9 @@
 export interface StoreInputModel {
   Id: string;
   Name: string;
-  PictureId: string;
-  CreatedOnUtc: Date;
-  UpdatedOnUtc: Date;
+  Url: string;
+  Hosts: string;
+  CompanyName: string;
+  CompanyAddress: string;
+  CompanyPhoneNumber: string;
 }

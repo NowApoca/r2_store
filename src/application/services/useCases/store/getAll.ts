@@ -16,7 +16,7 @@ export class getAllUseCase
   public async execute(
     params: any
   ): Promise<Array<StoreBaseModel | null> | null> {
-    const result = await this._ProductService.getAll();
+    const result = await this._ProductService.getAll(params);
     return result;
   }
 }

@@ -16,12 +16,14 @@ class RepositoryMySQL {
     constructor() {
         this.userMapper = new mappers_1.StoreMapperMySQL();
     }
-    getAll() {
+    getAll(params) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 if (connection_1.Connection.mySQL2Pool == null)
                     return null;
-                let [results, fields] = yield connection_1.Connection.mySQL2Pool.query("SELECT * from netamx.Store;");
+                let [results, fields] = yield connection_1.Connection.mySQL2Pool.query(params === undefined
+                    ? "SELECT * from netamx.Store;"
+                    : "SELECT * from netamx.Store where Url='" + params + "';");
                 let data = Object.values(JSON.parse(JSON.stringify(results)));
                 let result = data.map((r) => {
                     return new mappers_1.StoreMapperMySQL().mapFrom(r);

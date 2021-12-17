@@ -9,9 +9,9 @@ export class StoreMapperMySQL extends Mapper<StoreMySQL, StoreBaseModel> {
       name: param.Name.toString(),
       url: param.Url.toString(),
       hosts: param.Hosts.toString(),
-      companyName: param.CompanyName.toString(),
-      companyAddress: param.CompanyAddress.toString(),
-      companyPhoneNumber: param.CompanyPhoneNumber.toString(),
+      companyName: param.CompanyName?.toString(),
+      companyAddress: param.CompanyAddress?.toString(),
+      companyPhoneNumber: param.CompanyPhoneNumber?.toString(),
     };
   }
   mapTo(param: StoreBaseModel): StoreMySQL {

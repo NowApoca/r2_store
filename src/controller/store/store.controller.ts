@@ -5,9 +5,9 @@ import { getAllUseCase } from "../../application/services/useCases/store/getAll"
 import { StoreBaseModel } from "data/entities/store";
 
 export class StoreController {
-  async getAll(): Promise<Array<StoreBaseModel | null> | null> {
+  async getAll(params: any): Promise<Array<StoreBaseModel | null> | null> {
     const useCase = new getAllUseCase();
-    const data = useCase.execute(null);
+    const data = useCase.execute(params);
     return data;
   }
 

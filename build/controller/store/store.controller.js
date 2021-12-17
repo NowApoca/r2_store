@@ -13,10 +13,10 @@ exports.StoreController = void 0;
 const getById_1 = require("../../application/services/useCases/store/getById");
 const getAll_1 = require("../../application/services/useCases/store/getAll");
 class StoreController {
-    getAll() {
+    getAll(params) {
         return __awaiter(this, void 0, void 0, function* () {
             const useCase = new getAll_1.getAllUseCase();
-            const data = useCase.execute(null);
+            const data = useCase.execute(params);
             return data;
         });
     }

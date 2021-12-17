@@ -15,7 +15,8 @@ class getAllRoute {
     constructor(server) {
         this.getAll = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
             try {
-                const result = yield new store_1.StoreController().getAll();
+                const url = req.query.url;
+                const result = yield new store_1.StoreController().getAll(url);
                 res.status(200).send(result);
             }
             catch (e) { }

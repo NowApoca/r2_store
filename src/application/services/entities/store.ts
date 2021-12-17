@@ -23,13 +23,13 @@ export class ProductService {
   };
 
   //Conjunto de servicios bases de datos
-  async getAll(): Promise<Array<StoreBaseModel | null> | null> {
+  async getAll(params: any): Promise<Array<StoreBaseModel | null> | null> {
     try {
       var promises: Array<Promise<Array<StoreBaseModel | null> | null>> = [];
       const entries = Object.entries(this.repos);
 
       entries.forEach((entry) =>
-        promises.push((<IStoreRepository>entry[1]).getAll())
+        promises.push((<IStoreRepository>entry[1]).getAll(params))
       );
       let result_promises = await Promise.all(promises);
       if (result_promises.length > 0) {

@@ -10,11 +10,13 @@ export class RepositoryMySQL implements IStoreRepository {
     this.userMapper = new StoreMapperMySQL();
   }
 
-  async getAll(): Promise<Array<StoreBaseModel | null> | null> {
+  async getAll(params: any): Promise<Array<StoreBaseModel | null> | null> {
     try {
       if (Connection.mySQL2Pool == null) return null;
       let [results, fields] = await Connection.mySQL2Pool.query(
-        "SELECT * from netamx.Store;"
+        params === 'undefined'
+          ? "SELECT * from netamx.Store;"
+          : "SELECT * from netamx.Store where Hosts='" + params + "';"
       );
       let data = Object.values(JSON.parse(JSON.stringify(results)));
       let result = data.map<StoreBaseModel>((r) => {

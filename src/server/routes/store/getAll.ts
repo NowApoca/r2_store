@@ -10,7 +10,9 @@ export class getAllRoute {
 
   public getAll = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const result = await new StoreController().getAll();
+      const url = req.query.url;
+      console.log(req.query);
+      const result = await new StoreController().getAll(url);
       res.status(200).send(result);
     } catch (e) {}
   };

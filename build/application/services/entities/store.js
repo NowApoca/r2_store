@@ -21,12 +21,12 @@ class ProductService {
         };
     }
     //Conjunto de servicios bases de datos
-    getAll() {
+    getAll(params) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 var promises = [];
                 const entries = Object.entries(this.repos);
-                entries.forEach((entry) => promises.push(entry[1].getAll()));
+                entries.forEach((entry) => promises.push(entry[1].getAll(params)));
                 let result_promises = yield Promise.all(promises);
                 if (result_promises.length > 0) {
                     result_promises = result_promises.filter((i) => i !== null);

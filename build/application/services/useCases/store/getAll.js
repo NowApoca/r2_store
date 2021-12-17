@@ -17,7 +17,7 @@ class getAllUseCase {
     }
     execute(params) {
         return __awaiter(this, void 0, void 0, function* () {
-            const result = yield this._ProductService.getAll();
+            const result = yield this._ProductService.getAll(params);
             return result;
         });
     }

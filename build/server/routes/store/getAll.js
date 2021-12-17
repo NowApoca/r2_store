@@ -16,6 +16,7 @@ class getAllRoute {
         this.getAll = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
             try {
                 const url = req.query.url;
+                console.log(req.query);
                 const result = yield new store_1.StoreController().getAll(url);
                 res.status(200).send(result);
             }

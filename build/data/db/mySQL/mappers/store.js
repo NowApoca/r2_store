@@ -4,14 +4,15 @@ exports.StoreMapperMySQL = void 0;
 const base_1 = require("../../../../application/base");
 class StoreMapperMySQL extends base_1.Mapper {
     mapFrom(param) {
+        var _a, _b, _c;
         return {
             id: param.Id.toString(),
             name: param.Name.toString(),
             url: param.Url.toString(),
             hosts: param.Hosts.toString(),
-            companyName: param.CompanyName.toString(),
-            companyAddress: param.CompanyAddress.toString(),
-            companyPhoneNumber: param.CompanyPhoneNumber.toString(),
+            companyName: (_a = param.CompanyName) === null || _a === void 0 ? void 0 : _a.toString(),
+            companyAddress: (_b = param.CompanyAddress) === null || _b === void 0 ? void 0 : _b.toString(),
+            companyPhoneNumber: (_c = param.CompanyPhoneNumber) === null || _c === void 0 ? void 0 : _c.toString(),
         };
     }
     mapTo(param) {

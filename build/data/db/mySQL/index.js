@@ -21,9 +21,9 @@ class RepositoryMySQL {
             try {
                 if (connection_1.Connection.mySQL2Pool == null)
                     return null;
-                let [results, fields] = yield connection_1.Connection.mySQL2Pool.query(params === undefined
+                let [results, fields] = yield connection_1.Connection.mySQL2Pool.query(params === 'undefined'
                     ? "SELECT * from netamx.Store;"
-                    : "SELECT * from netamx.Store where Url='" + params + "';");
+                    : "SELECT * from netamx.Store where Hosts='" + params + "';");
                 let data = Object.values(JSON.parse(JSON.stringify(results)));
                 let result = data.map((r) => {
                     return new mappers_1.StoreMapperMySQL().mapFrom(r);

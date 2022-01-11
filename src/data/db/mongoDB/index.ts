@@ -26,4 +26,28 @@ export class RepositoryMongoDB implements IStoreRepository {
       return null;
     }
   }
+
+  async deleteById(id: Number){
+    try {
+      return null;
+    } catch (error) {
+      return null;
+    }
+  }
+
+  async putById(params: any){
+    try {
+      return null;
+    } catch (error) {
+      return null;
+    }
+  };
+
+  async postStore(params: any){
+    try {
+      return null;
+    } catch (error) {
+      return null;
+    }
+  }
 }

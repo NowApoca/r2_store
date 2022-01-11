@@ -44,4 +44,60 @@ export class RepositoryMySQL implements IStoreRepository {
       return null;
     }
   }
+
+  async deleteById(id: Number): Promise<null> {
+    try {
+      if (Connection.mySQL2Pool == null) return null;
+      let [results, fields] = await Connection.mySQL2Pool.query({
+        sql: "DELETE from netamx.Store where id=" + id + ";",
+      });
+    } catch (error) {
+      
+    }
+    return null;
+  }
+
+  async putById(params: any){
+    try {
+      if (Connection.mySQL2Pool == null) return null;
+      let [results, fields] = await Connection.mySQL2Pool.query({
+        sql: `UPDATE netamx.Store SET name="${params.name}" where id=${params.id};`,
+      });
+    } catch (error) {
+      
+    }
+    return null;
+  };
+
+  async postStore(params: any){
+    try {
+      if (Connection.mySQL2Pool == null) return null;
+      let [results, fields] = await Connection.mySQL2Pool.query({
+        sql: `INSERT INTO netamx.Store (
+          name,
+          url,
+          ssl_enabled,
+          hosts,
+          default_language_id,
+          display_order,
+          company_name,
+          company_address,
+          company_phone_number
+        ) VALUES (
+          '${params.name}',
+          '${params.url}',
+          '${params.sslEnabled}',
+          '${params.hosts}',
+          '${params.defaultLanguageId}',
+          '${params.displayOrder}',
+          '${params.companyName}',
+          '${params.companyAddress}',
+          '${params.companyPhoneNumber}',
+        );`,
+      });
+    } catch (error) {
+      
+    }
+    return null;
+  }
 }

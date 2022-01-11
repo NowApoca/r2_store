@@ -91,4 +91,95 @@ export class ProductService {
       return null;
     }
   }
+
+  async deleteById(id: Number): Promise<null> {
+    try {
+      var promises: Array<Promise<null>> = [];
+      const entries = Object.entries(this.repos);
+
+      entries.forEach((entry) =>
+        promises.push((<IStoreRepository>entry[1]).deleteById(id))
+      );
+      let result_promises = await Promise.all(promises);
+
+      if (result_promises.length > 0) {
+        result_promises = result_promises.filter((i) => i !== null);
+        var succeses: Array<Number> = [];
+        var errores: Array<IServiceResponse<null>> = [];
+        result_promises.forEach((result, index) =>
+          result == null
+            ? errores.push(
+                new ServiceResponse(result, entries[index][0], index)
+              )
+            : succeses.push(id)
+        );
+        return errores.length > 0 ? null : result_promises[0];
+      } else {
+        return null;
+      }
+    } catch (error) {
+      return null;
+    }
+  }
+
+  async putById(params: any): Promise<null> {
+    try {
+      var promises: Array<Promise<null>> = [];
+      const entries = Object.entries(this.repos);
+
+      entries.forEach((entry) =>
+        promises.push((<IStoreRepository>entry[1]).putById(params))
+      );
+      let result_promises = await Promise.all(promises);
+
+      if (result_promises.length > 0) {
+        result_promises = result_promises.filter((i) => i !== null);
+        var succeses: Array<Number> = [];
+        var errores: Array<IServiceResponse<null>> = [];
+        result_promises.forEach((result, index) =>
+          result == null
+            ? errores.push(
+                new ServiceResponse(result, entries[index][0], index)
+              )
+            : succeses.push(params.id)
+        );
+        return errores.length > 0 ? null : result_promises[0];
+      } else {
+        return null;
+      }
+    } catch (error) {
+      return null;
+    }
+  }
+
+  async postStore(params: any): Promise<null> {
+    try {
+      var promises: Array<Promise<null>> = [];
+      const entries = Object.entries(this.repos);
+
+      entries.forEach((entry) =>
+        promises.push((<IStoreRepository>entry[1]).postStore(params))
+      );
+      let result_promises = await Promise.all(promises);
+
+      if (result_promises.length > 0) {
+        result_promises = result_promises.filter((i) => i !== null);
+        var succeses: Array<Number> = [];
+        var errores: Array<IServiceResponse<null>> = [];
+        result_promises.forEach((result, index) =>
+          result == null
+            ? errores.push(
+                new ServiceResponse(result, entries[index][0], index)
+              )
+            : succeses.push(params.name)
+        );
+        return errores.length > 0 ? null : result_promises[0];
+      } else {
+        return null;
+      }
+    } catch (error) {
+      return null;
+    }
+  }
+
 }

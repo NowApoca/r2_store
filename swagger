@@ -1,0 +1,204 @@
+swagger: "2.0"
+info:
+  description: "This is the swagger of the store microservice"
+  version: "0.0.1"
+  title: "Neta MS Store"
+host: "-"
+basePath: "/v1"
+tags:
+- name: "store"
+  description: "Neta Store CRUD"
+schemes:
+- "https"
+- "http"
+paths:
+  /store:
+    post:
+      tags:
+      - "store"
+      summary: "Add a new store to the store"
+      description: ""
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Store object that needs to be added to the store"
+        required: true
+        schema:
+          $ref: "#/definitions/Store"
+      responses:
+        "405":
+          description: "Invalid input"
+    get:
+      tags:
+      - "store"
+      summary: "Find stores"
+      description: "Returns a stores with certain filters applied"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/StoreGet"
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "Store not found"
+      security:
+      - api_key: []
+  /store/{storeId}:
+    get:
+      tags:
+      - "store"
+      summary: "Find store by ID"
+      description: "Returns a single store"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "storeId"
+        in: "path"
+        description: "ID of store to return"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/StoreGet"
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "Store not found"
+      security:
+      - api_key: []
+    put:
+      tags:
+      - "store"
+      summary: "Updates a store in the store with form data"
+      description: ""
+      consumes:
+      - "application/x-www-form-urlencoded"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "storeId"
+        in: "path"
+        description: "ID of store that needs to be updated"
+        required: true
+        type: "integer"
+        format: "int64"
+      - name: "name"
+        in: "formData"
+        description: "Updated name of the store"
+        required: false
+        type: "string"
+      - name: "status"
+        in: "formData"
+        description: "Updated status of the store"
+        required: false
+        type: "string"
+      responses:
+        "405":
+          description: "Invalid input"
+    delete:
+      tags:
+      - "store"
+      summary: "Deletes a store"
+      description: ""
+      produces:
+      - "application/json"
+      parameters:
+      - name: "api_key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "storeId"
+        in: "path"
+        description: "Store id to delete"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "Store not found"
+securityDefinitions:
+  api_key:
+    type: "apiKey"
+    name: "api_key"
+    in: "header"
+definitions:
+  Store:
+    type: "object"
+    required:
+    - "name"
+    - "url"
+    - "sslEnabled"
+    - "hosts"
+    properties:
+      name:
+        type: "string"
+      url:
+        type: "string"
+      sslEnabled:
+        type: "boolean"
+        default: false
+      hosts:
+        type: "string"
+        default: false
+      defaultLanguageId:
+        type: "integer"
+        default: false
+      displayOrder:
+        type: "integer"
+        default: false
+      companyName:
+        type: "string"
+        default: false
+      companyAddress:
+        type: "string"
+        default: false
+      companyPhoneNumber:
+        type: "string"
+        default: false
+  StoreGet:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      name:
+        type: "string"
+      url:
+        type: "string"
+      sslEnabled:
+        type: "boolean"
+        default: false
+      hosts:
+        type: "string"
+        default: false
+      defaultLanguageId:
+        type: "integer"
+        default: false
+      displayOrder:
+        type: "integer"
+        default: false
+      companyName:
+        type: "string"
+        default: false
+      companyAddress:
+        type: "string"
+        default: false
+      companyPhoneNumber:
+        type: "string"
+        default: false
+externalDocs:
+  description: "Find out more about Swagger"
+  url: "http://swagger.io"

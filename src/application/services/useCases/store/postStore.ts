@@ -2,7 +2,7 @@ import { StoreBaseModel } from "data/entities";
 import { UseCase } from "../../../base";
 import { ProductService } from "../../entities/store";
 
-export class putByIdUseCase implements UseCase<any, StoreBaseModel | null> {
+export class postStoreUseCase implements UseCase<any, StoreBaseModel | null> {
   private _ProductService: ProductService;
 
   constructor() {
@@ -10,6 +10,7 @@ export class putByIdUseCase implements UseCase<any, StoreBaseModel | null> {
   }
 
   public async execute(params: any): Promise<StoreBaseModel | null> {
+    console.log(`EXECUTE postStoreUseCase WITH PARTAMS ` + params)
     const result = await this._ProductService.postStore(params);
     return result;
   }

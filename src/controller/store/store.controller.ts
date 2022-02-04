@@ -1,8 +1,8 @@
 import { getByIdUseCase } from "../../application/services/useCases/store/getById";
 import { getAllUseCase } from "../../application/services/useCases/store/getAll";
-import { deleteByIdCase } from "../../application/services/useCases/store/deleteById";
-import { putByIdCase } from "../../application/services/useCases/store/putById";
-import { postStoreCase } from "../../application/services/useCases/store/postStore";
+import { deleteByIdUseCase } from "../../application/services/useCases/store/deleteById";
+import { putByIdUseCase } from "../../application/services/useCases/store/putById";
+import { postStoreUseCase } from "../../application/services/useCases/store/postStore";
 import { StoreBaseModel } from "data/entities/store";
 
 export class StoreController {
@@ -20,19 +20,20 @@ export class StoreController {
   }
 
   async deleteById(id: any): Promise<null> {
-    const useCase = new deleteByIdCase(id);
+    const useCase = new deleteByIdUseCase();
     useCase.execute(id);
     return null;
   }
 
   async putById(id: any, params: any): Promise<null> {
-    const useCase = new putByIdCase(id, params);
-    useCase.execute(id);
+    const useCase = new putByIdUseCase();
+    params.id = id;
+    useCase.execute(params);
     return null;
   }
 
   async postStore(params: any): Promise<StoreBaseModel | null> {
-    const useCase = new postStoreCase();
+    const useCase = new postStoreUseCase();
     const data = useCase.execute(params);
     return data;
   }

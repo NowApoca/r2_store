@@ -81,7 +81,20 @@ export class RepositoryMySQL implements IStoreRepository {
         companyName,
         companyAddress,
         companyPhoneNumber,
-        createdOnUtc
+        companyPhoneNumber2,
+        createdOnUtc,
+        tipoId,
+        displayOrder,
+        sslEnabled,
+        defaultLanguageId,
+        hunterId,
+        longitud,
+        latitud,
+        delegacion,
+        colonia,
+        placeId,
+        formattedAddress,
+        zipCode
       ) VALUES (
         '${params.name}',
         '${params.url}',
@@ -89,7 +102,20 @@ export class RepositoryMySQL implements IStoreRepository {
         '${params.companyName}',
         '${params.companyAddress}',
         '${params.companyPhoneNumber}',
-        '${createdDate}'
+        '${params.companyPhoneNumber2}',
+        '${createdDate}',
+        ' ${params.tipoId}',
+        ' ${params.displayOrder}',
+        ' ${params.sslEnabled}',
+        ' ${params.defaultLanguageId}',
+        ' ${params.hunterId}',
+        ' ${params.longitud}',
+        ' ${params.latitud}',
+        ' ${params.delegacion}',
+        ' ${params.colonia}',
+        ' ${params.placeId}',
+        ' ${params.formattedAddress}',
+        ' ${params.zipCode}'
       );`
       let [results, fields] = await Connection.mySQL2Pool.query({
         sql: query,
